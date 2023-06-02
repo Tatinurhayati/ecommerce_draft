@@ -1,0 +1,68 @@
+{% load cart_template_tags %}
+
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <!-- Container wrapper -->
+    <div class="container">    
+        <!-- Toggle button -->
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent1"
+        aria-controls="navbarSupportedContent1"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        >
+        <i class="fas fa-bars"></i>
+        </button>
+    
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">      
+        <!-- Navbar brand -->
+        <a class="navbar-brand mt-2 mt-sm-0" href="#">
+            <img
+            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/70f7d800-e089-44c5-8d2c-aae8f7111278/dcdp6t3-7740d6a8-7962-47d8-958e-02b3af0416c0.jpg/v1/fill/w_1024,h_937,q_75,strp/online_store_logo_by_creative_p_dcdp6t3-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzcwZjdkODAwLWUwODktNDRjNS04ZDJjLWFhZThmNzExMTI3OFwvZGNkcDZ0My03NzQwZDZhOC03OTYyLTQ3ZDgtOTU4ZS0wMmIzYWYwNDE2YzAuanBnIiwiaGVpZ2h0IjoiPD05MzciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS53YXRlcm1hcmsiXSwid21rIjp7InBhdGgiOiJcL3dtXC83MGY3ZDgwMC1lMDg5LTQ0YzUtOGQyYy1hYWU4ZjcxMTEyNzhcL2NyZWF0aXZlLXAtNC5wbmciLCJvcGFjaXR5Ijo5NSwicHJvcG9ydGlvbnMiOjAuNDUsImdyYXZpdHkiOiJjZW50ZXIifX0.iPdw7pn49iMs32m8QAmPq1LdxRJ8dfJPOF381v2oWGs"
+            height="70"
+            alt="Toko"
+            loading="lazy"
+            />
+        </a>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+            <a class="nav-link " href="/">Beranda</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'toko:checkout' %}">Checkout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Kontak</a>
+                </li>
+        </ul>
+        <!-- Left links -->      
+        </div>
+        <!-- Collapsible wrapper -->
+        
+        <!-- Right elements -->
+        <div class="d-flex align-items-center">
+            {% if request.user.is_authenticated %}
+                <!-- Icon -->
+                <a class="nav-link me-3" href="{% url 'toko:order-summary' %}">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge rounded-pill badge-notification bg-danger">{{ request.user|total_produk_dikeranjang }}</span>
+                </a>
+                <a class="nav-link me-3" href="{% url 'account_logout' %}">
+                    <i class="fas fa-right-from-bracket"></i>
+                </a>
+            {% else %}
+                <a class="nav-link me-3" href="{% url 'account_login' %}">
+                <i class="fas fa-right-to-bracket"></i>
+            {% endif %}
+        </div> 
+        <!-- Right elements -->
+        
+    </div>
+    <!-- Container wrapper -->
+</nav>
+    <!-- Navbar -->
